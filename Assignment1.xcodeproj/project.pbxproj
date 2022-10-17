@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F4FD7E328FD026600E0AE20 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4FD7E228FD026600E0AE20 /* Singleton.swift */; };
 		3FDA494228FA3EAC0009F397 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494128FA3EAC0009F397 /* AppDelegate.swift */; };
 		3FDA494428FA3EAC0009F397 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */; };
-		3FDA494628FA3EAC0009F397 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494528FA3EAC0009F397 /* ViewController.swift */; };
+		3FDA494628FA3EAC0009F397 /* McqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494528FA3EAC0009F397 /* McqViewController.swift */; };
 		3FDA494928FA3EAC0009F397 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA494728FA3EAC0009F397 /* Main.storyboard */; };
 		3FDA494B28FA3EAE0009F397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA494A28FA3EAE0009F397 /* Assets.xcassets */; };
 		3FDA494E28FA3EAE0009F397 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA494C28FA3EAE0009F397 /* LaunchScreen.storyboard */; };
 		3FDA495928FA3EAF0009F397 /* Assignment1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA495828FA3EAF0009F397 /* Assignment1Tests.swift */; };
 		3FDA496328FA3EAF0009F397 /* Assignment1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA496228FA3EAF0009F397 /* Assignment1UITests.swift */; };
 		3FDA496528FA3EAF0009F397 /* Assignment1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA496428FA3EAF0009F397 /* Assignment1UITestsLaunchTests.swift */; };
+		3FDA497228FA4B980009F397 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA497128FA4B980009F397 /* ScoreViewController.swift */; };
+		3FDA497628FA51440009F397 /* FillInBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA497528FA51440009F397 /* FillInBlankViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F4FD7E228FD026600E0AE20 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		3FDA493E28FA3EAC0009F397 /* Assignment1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FDA494128FA3EAC0009F397 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3FDA494528FA3EAC0009F397 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3FDA494528FA3EAC0009F397 /* McqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McqViewController.swift; sourceTree = "<group>"; };
 		3FDA494828FA3EAC0009F397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3FDA494A28FA3EAE0009F397 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FDA494D28FA3EAE0009F397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		3FDA495E28FA3EAF0009F397 /* Assignment1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FDA496228FA3EAF0009F397 /* Assignment1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment1UITests.swift; sourceTree = "<group>"; };
 		3FDA496428FA3EAF0009F397 /* Assignment1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment1UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FDA497128FA4B980009F397 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		3FDA497528FA51440009F397 /* FillInBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInBlankViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +105,16 @@
 		3FDA494028FA3EAC0009F397 /* Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
+				3FDA497128FA4B980009F397 /* ScoreViewController.swift */,
 				3FDA494128FA3EAC0009F397 /* AppDelegate.swift */,
 				3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */,
-				3FDA494528FA3EAC0009F397 /* ViewController.swift */,
+				3FDA494528FA3EAC0009F397 /* McqViewController.swift */,
+				3FDA497528FA51440009F397 /* FillInBlankViewController.swift */,
 				3FDA494728FA3EAC0009F397 /* Main.storyboard */,
 				3FDA494A28FA3EAE0009F397 /* Assets.xcassets */,
 				3FDA494C28FA3EAE0009F397 /* LaunchScreen.storyboard */,
 				3FDA494F28FA3EAE0009F397 /* Info.plist */,
+				3F4FD7E228FD026600E0AE20 /* Singleton.swift */,
 			);
 			path = Assignment1;
 			sourceTree = "<group>";
@@ -258,9 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FDA494628FA3EAC0009F397 /* ViewController.swift in Sources */,
+				3FDA494628FA3EAC0009F397 /* McqViewController.swift in Sources */,
+				3F4FD7E328FD026600E0AE20 /* Singleton.swift in Sources */,
+				3FDA497628FA51440009F397 /* FillInBlankViewController.swift in Sources */,
 				3FDA494228FA3EAC0009F397 /* AppDelegate.swift in Sources */,
 				3FDA494428FA3EAC0009F397 /* SceneDelegate.swift in Sources */,
+				3FDA497228FA4B980009F397 /* ScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
