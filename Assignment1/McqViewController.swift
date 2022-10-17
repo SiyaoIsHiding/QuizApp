@@ -14,21 +14,17 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         "Which statement is true?",
         "Which equition holds true?"
     ]
-    let correct_anss : [String] = [
-        "D",
-        "C",
-        "B"
-    ]
+    let correct_anss : [String] = ["D","C","B"]
     let candidate_options : [[String]] = [
         ["A. The past tense of 'get' is 'got'",
          "B. Balboa is an island",
          "C. Paper is made from trees",
          "D. Macbook is a product of Microsoft"
         ],
-        ["A. C and Ca are the same chemical element",
-         "B. Coffee usually makes people feel sleepy",
-         "C. Human beings need to drink enough water to keep alive",
-         "D. Alcohol is harmless to people's health"
+        ["A. Fish has legs",
+         "B. Coffee makes people feel sleepy",
+         "C. Cups can contain water",
+         "D. Wine has no alcohol in it"
         ],
         ["A. 2+6=9",
          "B. 3**3=27",
@@ -37,41 +33,32 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         ]
     ]
 
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    
-    @IBOutlet weak var optionA: UILabel!
-    @IBOutlet weak var optionB: UILabel!
-    @IBOutlet weak var optionC: UILabel!
-    @IBOutlet weak var optionD: UILabel!
-    
     @IBOutlet weak var outcomeLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var finishLabel: UILabel!
     
-    
-    var options: [String] = ["A","B","C","D"]
+
     var curr_ans : String = ""
     var curr_ind : Int = 0
-    var score_arr = [0,0,0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isTranslucent = false
+        self.tabBarController?.tabBar.backgroundColor = .white
         self.picker.delegate = self
         self.picker.dataSource = self
         questionLabel.text = questions[curr_ind]
-        optionA.text = candidate_options[curr_ind][0]
-        optionB.text = candidate_options[curr_ind][1]
-        optionC.text = candidate_options[curr_ind][2]
-        optionD.text = candidate_options[curr_ind][3]
+
         outcomeLabel.text = ""
         nextButton.isHidden = true
+        submitButton.isHidden = false
+        finishLabel.isHidden = true
         
         // Labels size to fit
-        optionA.sizeToFit()
-        optionB.sizeToFit()
-        optionC.sizeToFit()
-        optionD.sizeToFit()
         outcomeLabel.sizeToFit()
     }
     
@@ -79,17 +66,16 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     @IBAction func submit(_ sender: UIButton){
         if curr_ans == correct_anss[curr_ind]{
-            outcomeLabel.text = "You are correct!"
-            score_arr[curr_ind] = 1
-            let score_sum = score_arr.reduce(0, +)
-            NotificationCenter.default.post(name: Notification.Name("mcq_score"), object: score_sum)
+            outcomeLabel.text = "CORRECT"
+            outcomeLabel.textColor = .green
+            Singleton.sharedInstance.scores_arr[curr_ind] = 1
         }else{
-            outcomeLabel.text = "You are wrong. The correct answer is \(correct_anss[curr_ind])."
-            score_arr[curr_ind] = 0
-            let score_sum = score_arr.reduce(0,+)
-            NotificationCenter.default.post(name: Notification.Name("mcq_score"), object: score_sum)
+            outcomeLabel.text = "INCORRECT"
+            outcomeLabel.textColor = .red
+            Singleton.sharedInstance.scores_arr[curr_ind] = -1
         }
         nextButton.isHidden = false
+        submitButton.isHidden = true
     }
     
     
@@ -97,15 +83,20 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBAction func next(_ sender: UIButton){
         curr_ind += 1
         if curr_ind == questions.count {
-            curr_ind = 0
+            finish()
+        }else{
+            viewDidLoad()
         }
-        questionLabel.text = questions[curr_ind]
-        optionA.text = candidate_options[curr_ind][0]
-        optionB.text = candidate_options[curr_ind][1]
-        optionC.text = candidate_options[curr_ind][2]
-        optionD.text = candidate_options[curr_ind][3]
-        outcomeLabel.text = ""
-        nextButton.isHidden = true
+    }
+    
+    func finish(){
+        headerLabel.removeFromSuperview()
+        questionLabel.removeFromSuperview()
+        picker.removeFromSuperview()
+        finishLabel.isHidden = false
+        outcomeLabel.removeFromSuperview()
+        submitButton.removeFromSuperview()
+        nextButton.removeFromSuperview()
     }
     
     // MARK: picker view
@@ -114,15 +105,34 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return options.count
+        return 4
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return options[row]
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label :UILabel? = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.frame.width, height: pickerView.frame.height/4))
+//            label?.textAlignment = .left
+        label?.text = candidate_options[curr_ind][row]
+        label?.font = UIFont(name:"System",size:17.0)
+        label?.lineBreakMode = .byWordWrapping
+        label?.numberOfLines = 0
+        label?.sizeToFit()
+        return label!
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        curr_ans = options[row]
+        switch row{
+        case 0:
+            curr_ans = "A"
+        case 1:
+            curr_ans = "B"
+        case 2:
+            curr_ans = "C"
+        case 3:
+            curr_ans = "D"
+        default:
+            curr_ans = ""
+        }
     }
     
 

@@ -1,9 +1,5 @@
-//
-//  Singleton.swift
-//  Assignment1
-//
-//  Created by HE Siyao on 16/10/2022.
-//
+// number pad input validation
+// layout in different screens
 
 class Singleton {
     static let sharedInstance = Singleton()

@@ -11,25 +11,36 @@ class ScoreViewController: UIViewController{
     
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var mcq_score: Int = 0
-    var fib_score: Int = 0
+    @IBOutlet var backgroundView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewWillAppear(false)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateMcqScore(_:)), name: Notification.Name("mcq_score"), object: nil)
-        scoreLabel.text = "Your score is \(mcq_score+fib_score)/6."
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFibScore(_:)), name: Notification.Name("fib_score"), object: nil)
+        super.viewWillAppear(animated)
+        var correct = 0
+        var incorrect = 0
+        for e in Singleton.sharedInstance.scores_arr{
+            if e == 1{
+                correct+=1
+            }else if e == -1{
+                incorrect+=1
+            }
+        }
+        scoreLabel.text = "Your score is \(correct)/6."
+        if correct < incorrect {
+            view.backgroundColor = .red
+        }else if incorrect < correct {
+            view.backgroundColor = .green
+        }else{
+            view.backgroundColor = .white
+        }
+        
+        
+        
     }
     
-    
-    
-    @objc func updateMcqScore(_ notification: Notification){
-        let newScore = notification.object as! Int
-        mcq_score = newScore
-    }
-    
-    @objc func updateFibScore(_ notification: Notification){
-        let newScore = notification.object as! Int
-        fib_score = newScore
-    }
+
 }

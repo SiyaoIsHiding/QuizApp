@@ -105,6 +105,7 @@
 		3FDA494028FA3EAC0009F397 /* Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
+				3F4FD7E228FD026600E0AE20 /* Singleton.swift */,
 				3FDA497128FA4B980009F397 /* ScoreViewController.swift */,
 				3FDA494128FA3EAC0009F397 /* AppDelegate.swift */,
 				3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */,
@@ -114,7 +115,6 @@
 				3FDA494A28FA3EAE0009F397 /* Assets.xcassets */,
 				3FDA494C28FA3EAE0009F397 /* LaunchScreen.storyboard */,
 				3FDA494F28FA3EAE0009F397 /* Info.plist */,
-				3F4FD7E228FD026600E0AE20 /* Singleton.swift */,
 			);
 			path = Assignment1;
 			sourceTree = "<group>";
