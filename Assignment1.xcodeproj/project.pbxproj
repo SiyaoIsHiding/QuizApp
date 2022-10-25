@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3F4FD7E328FD026600E0AE20 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4FD7E228FD026600E0AE20 /* Singleton.swift */; };
+		3F6C26A12907157600E39024 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26A02907157600E39024 /* EditTableViewController.swift */; };
+		3F6C26A72907175000E39024 /* NumQStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26A62907175000E39024 /* NumQStore.swift */; };
+		3F6C26A92907175900E39024 /* NumQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26A82907175900E39024 /* NumQ.swift */; };
+		3F6C26AB29076AAE00E39024 /* NumQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26AA29076AAE00E39024 /* NumQCell.swift */; };
 		3FDA494228FA3EAC0009F397 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494128FA3EAC0009F397 /* AppDelegate.swift */; };
 		3FDA494428FA3EAC0009F397 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */; };
 		3FDA494628FA3EAC0009F397 /* McqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA494528FA3EAC0009F397 /* McqViewController.swift */; };
@@ -40,6 +44,10 @@
 
 /* Begin PBXFileReference section */
 		3F4FD7E228FD026600E0AE20 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		3F6C26A02907157600E39024 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
+		3F6C26A62907175000E39024 /* NumQStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumQStore.swift; sourceTree = "<group>"; };
+		3F6C26A82907175900E39024 /* NumQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumQ.swift; sourceTree = "<group>"; };
+		3F6C26AA29076AAE00E39024 /* NumQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumQCell.swift; sourceTree = "<group>"; };
 		3FDA493E28FA3EAC0009F397 /* Assignment1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FDA494128FA3EAC0009F397 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +123,10 @@
 				3FDA494A28FA3EAE0009F397 /* Assets.xcassets */,
 				3FDA494C28FA3EAE0009F397 /* LaunchScreen.storyboard */,
 				3FDA494F28FA3EAE0009F397 /* Info.plist */,
+				3F6C26A02907157600E39024 /* EditTableViewController.swift */,
+				3F6C26A62907175000E39024 /* NumQStore.swift */,
+				3F6C26A82907175900E39024 /* NumQ.swift */,
+				3F6C26AA29076AAE00E39024 /* NumQCell.swift */,
 			);
 			path = Assignment1;
 			sourceTree = "<group>";
@@ -267,9 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6C26AB29076AAE00E39024 /* NumQCell.swift in Sources */,
+				3F6C26A72907175000E39024 /* NumQStore.swift in Sources */,
 				3FDA494628FA3EAC0009F397 /* McqViewController.swift in Sources */,
 				3F4FD7E328FD026600E0AE20 /* Singleton.swift in Sources */,
+				3F6C26A92907175900E39024 /* NumQ.swift in Sources */,
 				3FDA497628FA51440009F397 /* FillInBlankViewController.swift in Sources */,
+				3F6C26A12907157600E39024 /* EditTableViewController.swift in Sources */,
 				3FDA494228FA3EAC0009F397 /* AppDelegate.swift in Sources */,
 				3FDA494428FA3EAC0009F397 /* SceneDelegate.swift in Sources */,
 				3FDA497228FA4B980009F397 /* ScoreViewController.swift in Sources */,

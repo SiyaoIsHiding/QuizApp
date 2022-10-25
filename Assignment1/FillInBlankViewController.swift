@@ -2,14 +2,7 @@ import UIKit
 
 class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     
-    let questions: [String] = [
-        "6+6=",
-        "12x5=",
-        "8/2="
-    ]
-    let corr_answers : [Int] = [
-        12, 60, 4
-    ]
+    var NumQs :[NumQ] = NumQStore.allNumQ
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -24,13 +17,19 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     var curr_ans : Float!
     
     override func viewDidLoad() {
-        questionLabel.text = questions[curr_ind]
+        NumQs = NumQStore.allNumQ
+        questionLabel.text = NumQs[curr_ind].question
         nextButton.isHidden = true
         outcomeLabel.text = ""
         questionLabel.sizeToFit()
         finishLabel.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        viewDidLoad()
+        print(NumQs)
+    }
     
     @IBAction func answerChanged(_ textField: UITextField) {
         curr_ans = Float(textField.text ?? "")
@@ -38,7 +37,7 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     
     
     @IBAction func submit(_ sender: Any) {
-        if (curr_ans != nil), Float(curr_ans)-Float(corr_answers[curr_ind]) == Float(0) {
+        if (curr_ans != nil), Float(curr_ans)-Float(NumQs[curr_ind].answer) == Float(0) {
             outcomeLabel.text = "CORRECT"
             outcomeLabel.textColor = .green
             Singleton.sharedInstance.scores_arr[curr_ind+3] = 1
@@ -54,10 +53,10 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func next(_ sender: Any) {
         curr_ind+=1
-        if curr_ind == questions.count {
+        if curr_ind == NumQs.count {
             finish()
         }else{
-            questionLabel.text = questions[curr_ind]
+            questionLabel.text = NumQs[curr_ind].question
             outcomeLabel.text = ""
             nextButton.isHidden = true
             submitButton.isHidden = false
