@@ -7,9 +7,7 @@
 
 class NumQStore{
     static var allNumQ: [NumQ] = [NumQ( "3+3=", 6), NumQ("3**3=", 27), NumQ("9/2=", 4.5)]
-    
 
-    
     static func createNumQ(numq: NumQ){
         allNumQ.append(numq)
     }

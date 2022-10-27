@@ -23,6 +23,7 @@
 		3FDA496528FA3EAF0009F397 /* Assignment1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA496428FA3EAF0009F397 /* Assignment1UITestsLaunchTests.swift */; };
 		3FDA497228FA4B980009F397 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA497128FA4B980009F397 /* ScoreViewController.swift */; };
 		3FDA497628FA51440009F397 /* FillInBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA497528FA51440009F397 /* FillInBlankViewController.swift */; };
+		3FF24D39290B1A130041B38D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF24D38290B1A130041B38D /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		3FDA496428FA3EAF0009F397 /* Assignment1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FDA497128FA4B980009F397 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		3FDA497528FA51440009F397 /* FillInBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInBlankViewController.swift; sourceTree = "<group>"; };
+		3FF24D38290B1A130041B38D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				3F6C26A62907175000E39024 /* NumQStore.swift */,
 				3F6C26A82907175900E39024 /* NumQ.swift */,
 				3F6C26AA29076AAE00E39024 /* NumQCell.swift */,
+				3FF24D38290B1A130041B38D /* DetailViewController.swift */,
 			);
 			path = Assignment1;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF24D39290B1A130041B38D /* DetailViewController.swift in Sources */,
 				3F6C26AB29076AAE00E39024 /* NumQCell.swift in Sources */,
 				3F6C26A72907175000E39024 /* NumQStore.swift in Sources */,
 				3FDA494628FA3EAC0009F397 /* McqViewController.swift in Sources */,

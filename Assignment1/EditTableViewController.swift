@@ -44,14 +44,27 @@ class EditTableViewController: UITableViewController{
         if (editingStyle == .delete){
             NumQStore.removeNumQ(ind: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-//            updateNumQ()
+
         }
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         NumQStore.moveNumQ(from: sourceIndexPath.row, to: destinationIndexPath.row)
-//        updateNumQ()
+
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+        case "openNumQDetail":
+            if let row = tableView.indexPathForSelectedRow?.row{
+                let numQ = NumQStore.allNumQ[row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.numQ = numQ
+            }
+        default:
+            print("Wrong segue Identifier")
+        }
     }
     
     
