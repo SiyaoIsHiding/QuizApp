@@ -41,22 +41,29 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var finishLabel: UILabel!
     
-
+    @IBOutlet var redoButton: UIButton!
+    
     var curr_ans : String = ""
     var curr_ind : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isTranslucent = false
-        self.tabBarController?.tabBar.backgroundColor = .white
+        
         self.picker.delegate = self
         self.picker.dataSource = self
+
+        headerLabel.isHidden = false
+        questionLabel.isHidden = false
+        picker.isHidden = false
+        
         questionLabel.text = questions[curr_ind]
 
+        
         outcomeLabel.text = ""
         nextButton.isHidden = true
         submitButton.isHidden = false
         finishLabel.isHidden = true
+        redoButton.isHidden = true
         
         // Labels size to fit
         outcomeLabel.sizeToFit()
@@ -68,11 +75,11 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         if curr_ans == correct_anss[curr_ind]{
             outcomeLabel.text = "CORRECT"
             outcomeLabel.textColor = .green
-            Singleton.sharedInstance.scores_arr[curr_ind] = 1
+            NumQStore.mcqScore[curr_ind] = 1
         }else{
             outcomeLabel.text = "INCORRECT"
             outcomeLabel.textColor = .red
-            Singleton.sharedInstance.scores_arr[curr_ind] = -1
+            NumQStore.mcqScore[curr_ind] = -1
         }
         nextButton.isHidden = false
         submitButton.isHidden = true
@@ -83,6 +90,7 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBAction func next(_ sender: UIButton){
         curr_ind += 1
         if curr_ind == questions.count {
+            curr_ind = 0
             finish()
         }else{
             viewDidLoad()
@@ -90,13 +98,21 @@ class McqViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func finish(){
-        headerLabel.removeFromSuperview()
-        questionLabel.removeFromSuperview()
-        picker.removeFromSuperview()
+        headerLabel.isHidden = true
+        questionLabel.isHidden = true
+        picker.isHidden = true
         finishLabel.isHidden = false
-        outcomeLabel.removeFromSuperview()
-        submitButton.removeFromSuperview()
-        nextButton.removeFromSuperview()
+        redoButton.isHidden = false
+        outcomeLabel.text = ""
+        submitButton.isHidden = true
+        nextButton.isHidden = true
+    }
+    
+    
+    @IBAction func redo(_ sender: Any) {
+        NumQStore.refreshMcq()
+        curr_ind = 0
+        viewDidLoad()
     }
     
     // MARK: picker view

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F4FD7E328FD026600E0AE20 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4FD7E228FD026600E0AE20 /* Singleton.swift */; };
 		3F6C26A12907157600E39024 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26A02907157600E39024 /* EditTableViewController.swift */; };
 		3F6C26A72907175000E39024 /* NumQStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26A62907175000E39024 /* NumQStore.swift */; };
 		3F6C26A92907175900E39024 /* NumQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6C26A82907175900E39024 /* NumQ.swift */; };
@@ -44,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F4FD7E228FD026600E0AE20 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		3F6C26A02907157600E39024 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		3F6C26A62907175000E39024 /* NumQStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumQStore.swift; sourceTree = "<group>"; };
 		3F6C26A82907175900E39024 /* NumQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumQ.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		3FDA494028FA3EAC0009F397 /* Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
-				3F4FD7E228FD026600E0AE20 /* Singleton.swift */,
 				3FDA497128FA4B980009F397 /* ScoreViewController.swift */,
 				3FDA494128FA3EAC0009F397 /* AppDelegate.swift */,
 				3FDA494328FA3EAC0009F397 /* SceneDelegate.swift */,
@@ -286,7 +283,6 @@
 				3F6C26AB29076AAE00E39024 /* NumQCell.swift in Sources */,
 				3F6C26A72907175000E39024 /* NumQStore.swift in Sources */,
 				3FDA494628FA3EAC0009F397 /* McqViewController.swift in Sources */,
-				3F4FD7E328FD026600E0AE20 /* Singleton.swift in Sources */,
 				3F6C26A92907175900E39024 /* NumQ.swift in Sources */,
 				3FDA497628FA51440009F397 /* FillInBlankViewController.swift in Sources */,
 				3F6C26A12907157600E39024 /* EditTableViewController.swift in Sources */,

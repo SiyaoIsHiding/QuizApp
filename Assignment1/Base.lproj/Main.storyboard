@@ -67,6 +67,14 @@
                                     </pickerView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABq-Fy-NSc">
+                                <rect key="frame" x="178.5" y="476" width="57.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Redo"/>
+                                <connections>
+                                    <action selector="redo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QCF-UH-uUw"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PH" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2x-ST-nec">
                                 <rect key="frame" x="195.5" y="684" width="23" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -81,6 +89,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xTt-st-2SN" secondAttribute="trailing" constant="49" id="9OU-0B-rcu"/>
                             <constraint firstItem="odp-a5-HvU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="CWq-A9-U9X"/>
                             <constraint firstItem="qbb-ex-fIE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Dqz-7w-y5p"/>
+                            <constraint firstItem="ABq-Fy-NSc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KCf-Zr-WVu"/>
+                            <constraint firstItem="ABq-Fy-NSc" firstAttribute="top" secondItem="qbb-ex-fIE" secondAttribute="bottom" constant="17.5" id="LM9-tn-6NM"/>
                             <constraint firstItem="odp-a5-HvU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RFP-1h-00x"/>
                             <constraint firstItem="bfe-NK-NMK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SGM-c8-YpP"/>
                             <constraint firstItem="a2x-ST-nec" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X0d-Bv-OkL"/>
@@ -98,6 +108,7 @@
                         <outlet property="outcomeLabel" destination="a2x-ST-nec" id="wtJ-Kg-4kE"/>
                         <outlet property="picker" destination="Qxo-hS-eJo" id="YQ7-So-TXE"/>
                         <outlet property="questionLabel" destination="p8b-LM-yI9" id="OLE-V4-KOf"/>
+                        <outlet property="redoButton" destination="ABq-Fy-NSc" id="8wn-dA-i8x"/>
                         <outlet property="submitButton" destination="bfe-NK-NMK" id="IhU-5Z-lMf"/>
                     </connections>
                 </viewController>
@@ -150,6 +161,12 @@
                                     <action selector="submit:" destination="ZYR-f8-mXS" eventType="touchUpInside" id="ZIc-LV-Ljs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PB-DM-wse">
+                                <rect key="frame" x="172" y="364" width="70.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-fv-KZK">
                                 <rect key="frame" x="78.5" y="438" width="257.5" height="20.5"/>
                                 <string key="text">All fill-in-blank questions finished.
@@ -190,12 +207,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PB-DM-wse">
-                                <rect key="frame" x="172" y="364" width="70.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgN-jO-gFr">
+                                <rect key="frame" x="178.5" y="476" width="57.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Redo"/>
+                                <connections>
+                                    <action selector="redo:" destination="ZYR-f8-mXS" eventType="touchUpInside" id="rbr-ax-iFL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XCa-CG-Ksb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -209,8 +228,10 @@
                             <constraint firstItem="p9r-dP-mNF" firstAttribute="top" secondItem="XCa-CG-Ksb" secondAttribute="top" id="Lk6-uF-Ip0"/>
                             <constraint firstItem="fWO-fv-KZK" firstAttribute="centerY" secondItem="F4G-2S-9HQ" secondAttribute="centerY" id="SrS-7Y-nG6"/>
                             <constraint firstItem="p9r-dP-mNF" firstAttribute="trailing" secondItem="XCa-CG-Ksb" secondAttribute="trailing" constant="-16" id="YSb-a4-L46"/>
+                            <constraint firstItem="YgN-jO-gFr" firstAttribute="top" secondItem="fWO-fv-KZK" secondAttribute="bottom" constant="17.5" id="h73-ft-bDL"/>
                             <constraint firstItem="xjv-3n-n7p" firstAttribute="centerX" secondItem="F4G-2S-9HQ" secondAttribute="centerX" id="mpi-jn-5OR"/>
                             <constraint firstItem="p9r-dP-mNF" firstAttribute="leading" secondItem="XCa-CG-Ksb" secondAttribute="leading" constant="16" id="n2C-bN-QhA"/>
+                            <constraint firstItem="YgN-jO-gFr" firstAttribute="centerX" secondItem="F4G-2S-9HQ" secondAttribute="centerX" id="xWK-8y-cCd"/>
                             <constraint firstItem="XCa-CG-Ksb" firstAttribute="bottom" secondItem="5cl-Ii-9nf" secondAttribute="bottom" constant="389" id="zTy-ol-6Tm"/>
                         </constraints>
                         <connections>
@@ -226,6 +247,7 @@
                         <outlet property="nextButton" destination="5cl-Ii-9nf" id="2nC-hz-vp1"/>
                         <outlet property="outcomeLabel" destination="1PB-DM-wse" id="AQi-83-I9A"/>
                         <outlet property="questionLabel" destination="S4k-Yq-8TA" id="azU-sj-VzU"/>
+                        <outlet property="redoButton" destination="YgN-jO-gFr" id="MxD-0h-rAG"/>
                         <outlet property="submitButton" destination="xjv-3n-n7p" id="Bc7-UK-1QN"/>
                     </connections>
                 </viewController>
@@ -317,7 +339,13 @@
                             <outlet property="delegate" destination="CFb-Cm-PX8" id="MY5-3D-dCv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Numeric Fill-In-Blank Questions" id="Uyz-90-JPD"/>
+                    <navigationItem key="navigationItem" title="Numeric Fill-In-Blank Questions" id="Uyz-90-JPD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nH3-wy-naw">
+                            <connections>
+                                <segue destination="lvX-Vh-25n" kind="show" identifier="addNumQ" id="ic3-4G-WWZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aF-fQ-ZF2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -343,10 +371,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="QuestionTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hMb-EV-Q2J">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hMb-EV-Q2J">
                                                 <rect key="frame" x="76.5" y="0.0" width="305.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="lvX-Vh-25n" id="bp2-TG-yM8"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -359,10 +390,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="AnswerTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MGP-Ej-Wmv">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Answer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MGP-Ej-Wmv">
                                                 <rect key="frame" x="76.5" y="0.0" width="305.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="lvX-Vh-25n" id="fDp-d6-stS"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -380,12 +414,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DQX-V4-6hi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="9If-2X-cr1" firstAttribute="leading" secondItem="DQX-V4-6hi" secondAttribute="leading" constant="16" id="3O1-4e-nTB"/>
                             <constraint firstItem="DQX-V4-6hi" firstAttribute="bottom" secondItem="9If-2X-cr1" secondAttribute="bottom" constant="8" id="EQi-SW-10v"/>
                             <constraint firstItem="9If-2X-cr1" firstAttribute="top" secondItem="DQX-V4-6hi" secondAttribute="top" constant="8" id="Joo-P6-7AW"/>
                             <constraint firstItem="9If-2X-cr1" firstAttribute="trailing" secondItem="DQX-V4-6hi" secondAttribute="trailing" constant="-16" id="eaF-pq-whn"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kc3-d9-laF" appends="YES" id="Tc2-Cj-Rt8"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Numeric Question Detail" id="j3g-gK-hrh"/>
                     <connections>
@@ -395,6 +433,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v93-h8-j7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="kc3-d9-laF">
+                    <connections>
+                        <action selector="tapBackground:" destination="lvX-Vh-25n" id="xAY-sd-7Uk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4466.666666666667" y="116.51785714285714"/>
         </scene>
@@ -418,6 +461,9 @@
             <point key="canvasLocation" x="2834.7826086956525" y="97.767857142857139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ic3-4G-WWZ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="capsule" catalog="system" width="128" height="94"/>
         <image name="pencil" catalog="system" width="128" height="113"/>

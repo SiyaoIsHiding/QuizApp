@@ -9,6 +9,10 @@ import UIKit
 
 class EditTableViewController: UITableViewController{
     
+    required init? (coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
@@ -16,17 +20,13 @@ class EditTableViewController: UITableViewController{
     }
     
     
-    
-    @IBAction func toggleEditingMode(_ sender: UIButton) {
-        if isEditing {
-            sender.setTitle("Edit", for: .normal)
-            setEditing(false, animated: true)
-        }else{
-            sender.setTitle("Done", for: .normal)
-            setEditing(true, animated: true)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
+    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NumQCell", for: indexPath) as! NumQCell
         
@@ -62,6 +62,9 @@ class EditTableViewController: UITableViewController{
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.numQ = numQ
             }
+        case "addNumQ":
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.new = true
         default:
             print("Wrong segue Identifier")
         }

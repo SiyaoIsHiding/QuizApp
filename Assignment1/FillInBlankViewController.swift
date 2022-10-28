@@ -1,7 +1,7 @@
 import UIKit
 
 class FillInBlankViewController: UIViewController, UITextFieldDelegate{
-    
+    //TODO: auto reset when come back
     var NumQs :[NumQ] = NumQStore.allNumQ
     
     @IBOutlet weak var headerLabel: UILabel!
@@ -12,24 +12,36 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet var TapRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var outcomeLabel: UILabel!
     @IBOutlet weak var finishLabel: UILabel!
+    @IBOutlet var redoButton: UIButton!
     
-    var curr_ind = 0
+    var curr_ind : Int = 0
     var curr_ans : Float!
     
     override func viewDidLoad() {
+        NumQStore.vc = self
+        curr_ind = 0
         NumQs = NumQStore.allNumQ
-        questionLabel.text = NumQs[curr_ind].question
+        if NumQs.count > 0{
+            questionLabel.text = NumQs[curr_ind].question
+            headerLabel.isHidden = false
+            questionLabel.isHidden = false
+            answerTextField.isHidden = false
+            submitButton.isHidden = false
+        }else{
+            questionLabel.isHidden = true
+            headerLabel.isHidden = true
+            questionLabel.isHidden = true
+            answerTextField.isHidden = true
+            submitButton.isHidden = true
+        }
+        
         nextButton.isHidden = true
         outcomeLabel.text = ""
         questionLabel.sizeToFit()
         finishLabel.isHidden = true
+        redoButton.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        viewDidLoad()
-        print(NumQs)
-    }
     
     @IBAction func answerChanged(_ textField: UITextField) {
         curr_ans = Float(textField.text ?? "")
@@ -40,11 +52,11 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
         if (curr_ans != nil), Float(curr_ans)-Float(NumQs[curr_ind].answer) == Float(0) {
             outcomeLabel.text = "CORRECT"
             outcomeLabel.textColor = .green
-            Singleton.sharedInstance.scores_arr[curr_ind+3] = 1
+            NumQStore.numQScore[curr_ind] = 1
         }else{
             outcomeLabel.text = "INCORRECT"
             outcomeLabel.textColor = .red
-            Singleton.sharedInstance.scores_arr[curr_ind+3] = -1
+            NumQStore.numQScore[curr_ind] = -1
         }
         nextButton.isHidden = false
         submitButton.isHidden = true
@@ -65,16 +77,21 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     }
     
     func finish(){
-        headerLabel.removeFromSuperview()
-        questionLabel.removeFromSuperview()
-        answerTextField.removeFromSuperview()
-        outcomeLabel.removeFromSuperview()
-        submitButton.removeFromSuperview()
-        nextButton.removeFromSuperview()
+        headerLabel.isHidden = true
+        questionLabel.isHidden = true
+        answerTextField.isHidden = true
+        outcomeLabel.text = ""
+        submitButton.isHidden = true
+        nextButton.isHidden = true
         finishLabel.isHidden = false
+        redoButton.isHidden = false
     }
     
     
+    @IBAction func redo(_ sender: UIButton) {
+        self.viewDidLoad()
+        NumQStore.refreshNumQ()
+    }
     @IBAction func dismissKeyboard(_ sender : UITapGestureRecognizer){
         if answerTextField != nil{
             answerTextField.resignFirstResponder()
