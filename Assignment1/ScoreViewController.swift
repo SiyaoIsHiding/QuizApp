@@ -15,6 +15,7 @@ class ScoreViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NumQStore.refreshNumQ()
         viewWillAppear(false)
     }
     

@@ -9,9 +9,11 @@ import UIKit
 
 class EditTableViewController: UITableViewController{
     
+    
     required init? (coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         navigationItem.leftBarButtonItem = editButtonItem
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class EditTableViewController: UITableViewController{
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
     
     
 

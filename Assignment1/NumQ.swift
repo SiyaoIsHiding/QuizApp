@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NumQ{
+class NumQ: Codable{
     var question: String
     var answer: Float
     var date: Date

@@ -1,7 +1,7 @@
 import UIKit
 
 class FillInBlankViewController: UIViewController, UITextFieldDelegate{
-    //TODO: auto reset when come back
+    //TODO: save and load data
     var NumQs :[NumQ] = NumQStore.allNumQ
     
     @IBOutlet weak var headerLabel: UILabel!
