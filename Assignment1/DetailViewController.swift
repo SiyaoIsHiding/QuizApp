@@ -7,13 +7,16 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate{
+class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+    
+    // MARK: Attributes
     var numQ : NumQ!
     var new: Bool = false
     
     @IBOutlet var questionField: UITextField!
     @IBOutlet var answerField: UITextField!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     
     let numberFormatter:  NumberFormatter = {
         let f = NumberFormatter()
@@ -29,6 +32,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate{
         return f
     }()
     
+    // MARK: - Scene Events
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !new {questionField.text = numQ.question
@@ -38,10 +42,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate{
             dateLabel.text = ""
         }
         
-    }
-    
-    @IBAction func tapBackground(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
     }
    
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,9 +69,49 @@ class DetailViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+    // MARK: - Button events
+    
+    @IBAction func tapBackground(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    @IBAction func choosePhotoSource(_ sender: UIBarButtonItem) {
+        print("button clicked")
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.modalPresentationStyle = .popover
+        // TODO: Question for TA
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+                let imagePicker = self.imagePicker(for: .camera)
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+        }
+ 
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            let imagePicker = self.imagePicker(for: .photoLibrary)
+            imagePicker.modalPresentationStyle = .popover
+            imagePicker.popoverPresentationController?.barButtonItem = sender
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        alertController.addAction(libraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.barButtonItem = sender
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - image picker
+    func imagePicker(for sourceType: UIImagePickerController.SourceType) -> UIImagePickerController{
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = self
+        return imagePicker
+    }
 }
