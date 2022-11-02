@@ -298,32 +298,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumQCell" rowHeight="90" id="d6M-cl-JxO" customClass="NumQCell" customModule="Assignment1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumQCell" rowHeight="65" id="d6M-cl-JxO" customClass="NumQCell" customModule="Assignment1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d6M-cl-JxO" id="UEv-uY-6zp">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iH-vR-C1L">
-                                            <rect key="frame" x="20" y="58.5" width="374" height="13.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabeLabelLabelLabel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARB-31-cf0">
                                             <rect key="frame" x="20" y="11" width="374" height="17"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iH-vR-C1L">
+                                            <rect key="frame" x="20" y="38" width="374" height="13.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5iH-vR-C1L" firstAttribute="leading" secondItem="ARB-31-cf0" secondAttribute="leading" id="23A-YT-Xor"/>
                                         <constraint firstItem="ARB-31-cf0" firstAttribute="top" secondItem="UEv-uY-6zp" secondAttribute="topMargin" id="BSb-vg-b5q"/>
-                                        <constraint firstItem="5iH-vR-C1L" firstAttribute="top" secondItem="ARB-31-cf0" secondAttribute="bottom" constant="30.5" id="PSB-gJ-moT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5iH-vR-C1L" secondAttribute="bottom" constant="2.5" id="Fiy-cu-r7P"/>
                                         <constraint firstItem="ARB-31-cf0" firstAttribute="leading" secondItem="UEv-uY-6zp" secondAttribute="leadingMargin" id="dX7-kX-7u5"/>
                                         <constraint firstItem="5iH-vR-C1L" firstAttribute="centerX" secondItem="UEv-uY-6zp" secondAttribute="centerX" id="fTU-9n-qrL"/>
+                                        <constraint firstItem="5iH-vR-C1L" firstAttribute="top" secondItem="ARB-31-cf0" secondAttribute="bottom" constant="10" id="ibs-MX-uXP"/>
                                         <constraint firstItem="ARB-31-cf0" firstAttribute="centerX" secondItem="UEv-uY-6zp" secondAttribute="centerX" id="yjs-XX-0OJ"/>
                                     </constraints>
                                 </tableViewCellContentView>

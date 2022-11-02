@@ -10,11 +10,13 @@ import Foundation
 class NumQ: Codable{
     var question: String
     var answer: Float
-    var date: Date
+    let date: Date
+    let key: String
     
     init(_ question: String, _ answer: Float){
         self.question = question
         self.answer = answer
         self.date = Date()
+        self.key = UUID().uuidString
     }
 }

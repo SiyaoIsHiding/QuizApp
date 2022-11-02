@@ -31,40 +31,34 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         f.timeStyle = .medium
         return f
     }()
+    var imageStore: ImageStore!
     
     // MARK: - Scene Events
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !new {questionField.text = numQ.question
-            answerField.text = numberFormatter.string(from: NSNumber(value: numQ.answer))
-            dateLabel.text = dateFormatter.string(from: numQ.date)
+        if new {
+            let newNumQ = NumQ("Input Question", 0.0)
+            numQ = newNumQ
         }else{
-            dateLabel.text = ""
+            questionField.text = numQ.question
+            answerField.text = numberFormatter.string(from: NSNumber(value: numQ.answer))
         }
+        dateLabel.text = dateFormatter.string(from: numQ.date)
+        imageView.image = imageStore.image(forKey: numQ.key)
         
     }
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         view.endEditing(true)
-        if !new{
-            numQ.question = questionField.text ?? ""
-            if let answer = answerField.text, let value = numberFormatter.number(from: answer){
-                numQ.answer = value.floatValue
-            }else{
-                numQ.answer = 0
-            }
+        numQ.question = questionField.text ?? ""
+        if let answer = answerField.text, let value = numberFormatter.number(from: answer){
+            numQ.answer = value.floatValue
         }else{
-            let newQuestion = questionField.text ?? ""
-            let newAnswer: Float
-            if let answer = answerField.text, let value = numberFormatter.number(from: answer){
-                newAnswer = value.floatValue
-            }else{
-                newAnswer = 0
-            }
-            
-            let newNumQ = NumQ(newQuestion, newAnswer)
-            NumQStore.createNumQ(numq: newNumQ)
+            numQ.answer = 0
+        }
+        if new {
+            NumQStore.createNumQ(numq: numQ)
         }
         
     }
@@ -113,5 +107,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         imagePicker.sourceType = sourceType
         imagePicker.delegate = self
         return imagePicker
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as! UIImage
+        imageStore.setImage(image, forKey: numQ.key)
+        imageView.image = image
+        dismiss(animated: true)
     }
 }

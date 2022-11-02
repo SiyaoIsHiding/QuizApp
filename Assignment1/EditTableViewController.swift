@@ -8,13 +8,14 @@
 import UIKit
 
 class EditTableViewController: UITableViewController{
-    
+    var imageStore: ImageStore!
     
     required init? (coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         navigationItem.leftBarButtonItem = editButtonItem
-        
     }
+    
+    // MARK: - Scene Events
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
@@ -28,7 +29,7 @@ class EditTableViewController: UITableViewController{
     }
     
     
-    
+    // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NumQCell", for: indexPath) as! NumQCell
@@ -47,7 +48,7 @@ class EditTableViewController: UITableViewController{
         if (editingStyle == .delete){
             NumQStore.removeNumQ(ind: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-
+            imageStore.removeImage(forKey: NumQStore.allNumQ[indexPath.row].key)
         }
     }
     
@@ -57,6 +58,7 @@ class EditTableViewController: UITableViewController{
         
     }
     
+    // MARK: - To Detail View Controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
         case "openNumQDetail":
@@ -64,10 +66,12 @@ class EditTableViewController: UITableViewController{
                 let numQ = NumQStore.allNumQ[row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.numQ = numQ
+                detailViewController.imageStore = imageStore
             }
         case "addNumQ":
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.new = true
+            detailViewController.imageStore = imageStore
         default:
             print("Wrong segue Identifier")
         }
