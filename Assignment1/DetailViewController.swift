@@ -11,7 +11,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     // MARK: Attributes
     var numQ : NumQ!
-    var new: Bool = false
     
     @IBOutlet var questionField: UITextField!
     @IBOutlet var answerField: UITextField!
@@ -36,13 +35,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     // MARK: - Scene Events
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if new {
-            let newNumQ = NumQ("Input Question", 0.0)
-            numQ = newNumQ
-        }else{
-            questionField.text = numQ.question
-            answerField.text = numberFormatter.string(from: NSNumber(value: numQ.answer))
-        }
+        questionField.text = numQ.question
+        answerField.text = numberFormatter.string(from: NSNumber(value: numQ.answer))
         dateLabel.text = dateFormatter.string(from: numQ.date)
         imageView.image = imageStore.image(forKey: numQ.key)
         
@@ -57,10 +51,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         }else{
             numQ.answer = 0
         }
-        if new {
-            NumQStore.createNumQ(numq: numQ)
-        }
-        
     }
     
     // MARK: - Button events

@@ -46,9 +46,9 @@ class EditTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete){
+            imageStore.removeImage(forKey: NumQStore.allNumQ[indexPath.row].key)
             NumQStore.removeNumQ(ind: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            imageStore.removeImage(forKey: NumQStore.allNumQ[indexPath.row].key)
         }
     }
     
@@ -70,8 +70,10 @@ class EditTableViewController: UITableViewController{
             }
         case "addNumQ":
             let detailViewController = segue.destination as! DetailViewController
-            detailViewController.new = true
+            let newNumQ = NumQ("", 0)
+            NumQStore.createNumQ(numq: newNumQ)
             detailViewController.imageStore = imageStore
+            detailViewController.numQ = newNumQ
         default:
             print("Wrong segue Identifier")
         }

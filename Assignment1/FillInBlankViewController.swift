@@ -21,25 +21,40 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
         NumQStore.vc = self
         curr_ind = 0
         NumQs = NumQStore.allNumQ
-        if NumQs.count > 0{
-            questionLabel.text = NumQs[curr_ind].question
-            headerLabel.isHidden = false
-            questionLabel.isHidden = false
-            answerTextField.isHidden = false
-            submitButton.isHidden = false
+        
+        toggleFinish(toFinish: false)
+        NumQStore.numQScore = Array(repeating: 0, count: NumQs.count)
+        questionLabel.sizeToFit()
+    }
+    
+    func toggleFinish(toFinish: Bool){
+        if !toFinish {
+            if (NumQs.count > 0) {
+                questionLabel.text = NumQs[curr_ind].question
+                headerLabel.isHidden = false
+                questionLabel.isHidden = false
+                answerTextField.isHidden = false
+                submitButton.isHidden = false
+            }else{
+                headerLabel.isHidden = true
+                questionLabel.isHidden = true
+                answerTextField.isHidden = true
+                submitButton.isHidden = true
+            }
+            finishLabel.isHidden = true
+            redoButton.isHidden = true
+            nextButton.isHidden = true
+            outcomeLabel.text = ""
         }else{
-            questionLabel.isHidden = true
             headerLabel.isHidden = true
             questionLabel.isHidden = true
             answerTextField.isHidden = true
+            outcomeLabel.text = ""
             submitButton.isHidden = true
+            nextButton.isHidden = true
+            finishLabel.isHidden = false
+            redoButton.isHidden = false
         }
-        
-        nextButton.isHidden = true
-        outcomeLabel.text = ""
-        questionLabel.sizeToFit()
-        finishLabel.isHidden = true
-        redoButton.isHidden = true
     }
     
     
@@ -66,7 +81,7 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     @IBAction func next(_ sender: Any) {
         curr_ind+=1
         if curr_ind == NumQs.count {
-            finish()
+            toggleFinish(toFinish: true)
         }else{
             questionLabel.text = NumQs[curr_ind].question
             outcomeLabel.text = ""
@@ -76,16 +91,6 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-    func finish(){
-        headerLabel.isHidden = true
-        questionLabel.isHidden = true
-        answerTextField.isHidden = true
-        outcomeLabel.text = ""
-        submitButton.isHidden = true
-        nextButton.isHidden = true
-        finishLabel.isHidden = false
-        redoButton.isHidden = false
-    }
     
     
     @IBAction func redo(_ sender: UIButton) {
