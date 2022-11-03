@@ -24,6 +24,8 @@
 		3FDA497628FA51440009F397 /* FillInBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA497528FA51440009F397 /* FillInBlankViewController.swift */; };
 		3FF24D39290B1A130041B38D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF24D38290B1A130041B38D /* DetailViewController.swift */; };
 		3FFD67D12910F49C00E6EB3B /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFD67D02910F49C00E6EB3B /* ImageStore.swift */; };
+		3FFD681329139D3C00E6EB3B /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFD681229139D3C00E6EB3B /* DrawViewController.swift */; };
+		3FFD681529139DF100E6EB3B /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFD681429139DF100E6EB3B /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		3FDA497528FA51440009F397 /* FillInBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInBlankViewController.swift; sourceTree = "<group>"; };
 		3FF24D38290B1A130041B38D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3FFD67D02910F49C00E6EB3B /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		3FFD681229139D3C00E6EB3B /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		3FFD681429139DF100E6EB3B /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 				3F6C26AA29076AAE00E39024 /* NumQCell.swift */,
 				3FF24D38290B1A130041B38D /* DetailViewController.swift */,
 				3FFD67D02910F49C00E6EB3B /* ImageStore.swift */,
+				3FFD681229139D3C00E6EB3B /* DrawViewController.swift */,
+				3FFD681429139DF100E6EB3B /* CanvasView.swift */,
 			);
 			path = Assignment1;
 			sourceTree = "<group>";
@@ -282,7 +288,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFD681329139D3C00E6EB3B /* DrawViewController.swift in Sources */,
 				3FFD67D12910F49C00E6EB3B /* ImageStore.swift in Sources */,
+				3FFD681529139DF100E6EB3B /* CanvasView.swift in Sources */,
 				3FF24D39290B1A130041B38D /* DetailViewController.swift in Sources */,
 				3F6C26AB29076AAE00E39024 /* NumQCell.swift in Sources */,
 				3F6C26A72907175000E39024 /* NumQStore.swift in Sources */,

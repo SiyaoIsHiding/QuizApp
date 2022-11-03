@@ -436,9 +436,14 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jib-mN-hvb">
                                 <rect key="frame" x="20" y="764" width="374" height="49"/>
                                 <items>
-                                    <barButtonItem title="Camera" image="camera" catalog="system" id="G5I-Fi-WL5">
+                                    <barButtonItem systemItem="camera" id="G5I-Fi-WL5">
                                         <connections>
                                             <action selector="choosePhotoSource:" destination="lvX-Vh-25n" id="wx2-Lx-fyd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Draw" image="square.and.pencil" catalog="system" id="tfF-aE-cfn">
+                                        <connections>
+                                            <segue destination="wJV-3d-m54" kind="show" identifier="canvas" id="uin-Lb-qZU"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -460,7 +465,7 @@
                             <outletCollection property="gestureRecognizers" destination="kc3-d9-laF" appends="YES" id="Tc2-Cj-Rt8"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Numeric Question Detail" id="j3g-gK-hrh"/>
+                    <navigationItem key="navigationItem" title="Question Detail" id="j3g-gK-hrh"/>
                     <connections>
                         <outlet property="DateLabel" destination="X4T-Hh-JXu" id="LV9-lm-awx"/>
                         <outlet property="QuestionField" destination="hMb-EV-Q2J" id="936-Hm-sdp"/>
@@ -476,6 +481,37 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4468" y="98"/>
+        </scene>
+        <!--Canvas-->
+        <scene sceneID="py8-yr-mt7">
+            <objects>
+                <viewController id="wJV-3d-m54" customClass="DrawViewController" customModule="Assignment1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6LO-tj-cHN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVg-rp-iGm" customClass="CanvasView" customModule="Assignment1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jcx-Cs-pUj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aVg-rp-iGm" firstAttribute="trailing" secondItem="Jcx-Cs-pUj" secondAttribute="trailing" id="Nla-W1-K4N"/>
+                            <constraint firstItem="aVg-rp-iGm" firstAttribute="bottom" secondItem="Jcx-Cs-pUj" secondAttribute="bottom" id="Zt4-Ea-8iV"/>
+                            <constraint firstItem="aVg-rp-iGm" firstAttribute="leading" secondItem="Jcx-Cs-pUj" secondAttribute="leading" id="aoo-fa-93F"/>
+                            <constraint firstItem="aVg-rp-iGm" firstAttribute="top" secondItem="Jcx-Cs-pUj" secondAttribute="top" id="bh4-9P-nTP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Canvas" id="PEy-G8-51X"/>
+                    <connections>
+                        <outlet property="canvas" destination="aVg-rp-iGm" id="twP-Kw-9ce"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYj-bl-QNx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5147.826086956522" y="97.767857142857139"/>
         </scene>
         <!--Edit MCQ-->
         <scene sceneID="PCC-vf-fWW">
@@ -501,10 +537,10 @@
         <segue reference="ic3-4G-WWZ"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="capsule" catalog="system" width="128" height="94"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="questionmark.app" catalog="system" width="128" height="114"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="target" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

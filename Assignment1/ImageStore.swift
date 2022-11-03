@@ -22,6 +22,7 @@ class ImageStore{
         let url = imageURL(forKey: key)
         if let data = image.jpegData(compressionQuality: 0.5) {
             try? data.write(to: url)
+            print(url)
         }
     }
     

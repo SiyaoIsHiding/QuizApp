@@ -105,4 +105,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         imageView.image = image
         dismiss(animated: true)
     }
+    
+    // MARK: - drawing
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+        case "canvas":
+            let drawViewController = segue.destination as! DrawViewController
+            drawViewController.numQ = numQ
+            drawViewController.imageStore = imageStore
+        default:
+            print("Wrong segue identifier")
+        }
+    }
 }
