@@ -12,14 +12,14 @@ import UIKit
 // double tap on blank to clear -> confirm. Completed
 // single tap on a line : delete, red, yellow, blue, black. Completed
 // Long press on a line and pan to move
-// load existing image to canvas
+// load existing image to canvas. Completed
 
 class CanvasView: UIView{
     
     // MARK: Attributes
     
     var currentLine : Line?
-    var finishedLines = [Line]()
+    var finishedLines: [Line]!
     var currColor = UIColor.black
     var selectedLineIndex: Int? {
         didSet{
@@ -41,10 +41,12 @@ class CanvasView: UIView{
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.delaysTouchesBegan = true
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
         
         tapRecognizer.require(toFail: doubleTapRecognizer)
         addGestureRecognizer(tapRecognizer)
         addGestureRecognizer(doubleTapRecognizer)
+        addGestureRecognizer(longPressRecognizer)
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -105,6 +107,59 @@ class CanvasView: UIView{
         
         
     }
+    
+    @objc func longPress(_ gestureRecognizer: UIGestureRecognizer){
+        let point = gestureRecognizer.location(in: self)
+        selectedLineIndex = indexOfLine(at: point)
+        let menu = UIMenuController.shared
+        if selectedLineIndex == nil {
+            // Long Press on blank to change color
+            becomeFirstResponder()
+            // Menu Items
+            let deleteItem = UIMenuItem(title: "Delete", action: #selector(deleteLine(_:)))
+            // TODO: Question for TA
+            let redItem = UIMenuItem(title: "Red", action: #selector(changeRedPermanently(_:)))
+            let yellowItem = UIMenuItem(title: "Yellow", action: #selector(changeYellowPermanently(_:)))
+            let blueItem = UIMenuItem(title: "Blue", action: #selector(changeBluePermanently(_:)))
+            let blackItem = UIMenuItem(title: "Black", action: #selector(changeBlackPermanently(_:)))
+            
+            var items = [deleteItem,redItem,yellowItem,blueItem,blackItem]
+            
+            switch currColor{
+            case UIColor.red:
+                items.remove(at: 1)
+            case UIColor.yellow:
+                items.remove(at: 2)
+            case UIColor.blue:
+                items.remove(at: 3)
+            case UIColor.black:
+                items.remove(at: 4)
+            default: break
+            }
+            
+            menu.menuItems = items
+            let targetRect = CGRect(x: point.x, y: point.y, width: 2, height: 2)
+            menu.showMenu(from: self, rect: targetRect)
+                                        
+        }else{
+            menu.hideMenu()
+        }
+    }
+    
+    // MARK: - Change Color Permanently
+    @objc func changeRedPermanently(_ sender: UIMenuController){
+        currColor = UIColor.red
+    }
+    @objc func changeYellowPermanently(_ sender: UIMenuController){
+        currColor = UIColor.yellow
+    }
+    @objc func changeBluePermanently(_ sender: UIMenuController){
+        currColor = UIColor.blue
+    }
+    @objc func changeBlackPermanently(_ sender: UIMenuController){
+        currColor = UIColor.black
+    }
+    
     // MARK: - Select a Line
     @objc func deleteLine(_ sender: UIMenuController){
         if let index = selectedLineIndex {
@@ -214,6 +269,8 @@ class CanvasView: UIView{
         if let lines = numQ.drawing {
             finishedLines = lines
             setNeedsDisplay()
+        }else{
+            finishedLines = [Line]()
         }
     }
 
