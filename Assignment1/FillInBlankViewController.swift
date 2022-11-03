@@ -13,9 +13,10 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var outcomeLabel: UILabel!
     @IBOutlet weak var finishLabel: UILabel!
     @IBOutlet var redoButton: UIButton!
-    
+    @IBOutlet var imageView: UIImageView!
     var curr_ind : Int = 0
     var curr_ans : Float!
+    var imageStore: ImageStore!
     
     override func viewDidLoad() {
         NumQStore.vc = self
@@ -31,11 +32,14 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
         if !toFinish {
             if (NumQs.count > 0) {
                 questionLabel.text = NumQs[curr_ind].question
+                imageView.image = imageStore.image(forKey: NumQs[curr_ind].key)
                 headerLabel.isHidden = false
                 questionLabel.isHidden = false
+                imageView.isHidden = false
                 answerTextField.isHidden = false
                 submitButton.isHidden = false
             }else{
+                imageView.isHidden = true
                 headerLabel.isHidden = true
                 questionLabel.isHidden = true
                 answerTextField.isHidden = true
@@ -48,6 +52,7 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
         }else{
             headerLabel.isHidden = true
             questionLabel.isHidden = true
+            imageView.isHidden = true
             answerTextField.isHidden = true
             outcomeLabel.text = ""
             submitButton.isHidden = true
@@ -84,6 +89,7 @@ class FillInBlankViewController: UIViewController, UITextFieldDelegate{
             toggleFinish(toFinish: true)
         }else{
             questionLabel.text = NumQs[curr_ind].question
+            imageView.image = imageStore.image(forKey: NumQs[curr_ind].key)
             outcomeLabel.text = ""
             nextButton.isHidden = true
             submitButton.isHidden = false

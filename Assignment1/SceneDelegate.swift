@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navController =  toolBar.viewControllers![0] as! UINavigationController
         let editController = navController.topViewController as! EditTableViewController
         editController.imageStore = imageStore
+        let numQController = toolBar.viewControllers![2] as! FillInBlankViewController
+        numQController.imageStore = imageStore
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
