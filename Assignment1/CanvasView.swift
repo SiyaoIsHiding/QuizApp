@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // Long press on blank to change color
-// double tap on blank to clear -> confirm
+// double tap on blank to clear -> confirm. Completed
 // single tap on a line : delete, red, yellow, blue, black. Completed
 // Long press on a line and pan to move
 // load existing image to canvas
@@ -32,6 +32,7 @@ class CanvasView: UIView{
             }
         }
     }
+    var vc : DrawViewController!
     
     // MARK: - Gesture Recognition
     required init?(coder aDecoder: NSCoder){
@@ -42,6 +43,7 @@ class CanvasView: UIView{
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.delaysTouchesBegan = true
+        
         
         tapRecognizer.require(toFail: doubleTapRecognizer)
         addGestureRecognizer(tapRecognizer)
@@ -88,10 +90,23 @@ class CanvasView: UIView{
     }
     
     @objc func doubleTap(_ gestureRecognizer: UIGestureRecognizer){
-        finishedLines.removeAll()
-        currentLine = nil
-        selectedLineIndex = nil
-        setNeedsDisplay()
+        let alertController = UIAlertController(title: "Clear Canvas", message: "Are you sure?", preferredStyle: .alert)
+        alertController.modalPresentationStyle = .automatic
+        
+        let confirmAction = UIAlertAction(title: "Delete", style: .destructive) { [self] _ in
+            self.finishedLines.removeAll()
+            self.currentLine = nil
+            self.selectedLineIndex = nil
+            self.setNeedsDisplay()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        vc.present(alertController, animated: true)
+        
+        
     }
     // MARK: - Select a Line
     @objc func deleteLine(_ sender: UIMenuController){
