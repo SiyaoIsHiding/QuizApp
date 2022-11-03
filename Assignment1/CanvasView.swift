@@ -17,11 +17,7 @@ import UIKit
 class CanvasView: UIView{
     
     // MARK: Attributes
-    struct Line{
-        var begin = CGPoint.zero
-        var end = CGPoint.zero
-        var color = UIColor.black
-    }
+    
     var currentLine : Line?
     var finishedLines = [Line]()
     var currColor = UIColor.black
@@ -33,6 +29,7 @@ class CanvasView: UIView{
         }
     }
     var vc : DrawViewController!
+    var numQ: NumQ!
     
     // MARK: - Gesture Recognition
     required init?(coder aDecoder: NSCoder){
@@ -210,6 +207,13 @@ class CanvasView: UIView{
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)
+        }
+    }
+    
+    func loadExistingDrawing(){
+        if let lines = numQ.drawing {
+            finishedLines = lines
+            setNeedsDisplay()
         }
     }
 

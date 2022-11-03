@@ -12,6 +12,7 @@ class NumQ: Codable{
     var answer: Float
     let date: Date
     let key: String
+    var drawing: [Line]?
     
     init(_ question: String, _ answer: Float){
         self.question = question

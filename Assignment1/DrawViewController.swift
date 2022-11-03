@@ -16,12 +16,15 @@ class DrawViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         canvas.vc = self
+        canvas.numQ = numQ
+        canvas.loadExistingDrawing()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let image = canvas.snapshot()
         imageStore.setImage(image, forKey: numQ.key)
+        numQ.drawing = canvas.finishedLines
     }
     
     
