@@ -132,10 +132,8 @@ class CanvasView: UIView{
     var lastPoint: CGPoint?
     func longPressOnLine(_ gestureRecognizer: UIGestureRecognizer){
         if gestureRecognizer.state == .began{
-            print("begin")
             lastPoint = gestureRecognizer.location(in: self)
         }else{
-            print("update")
             let newPoint = gestureRecognizer.location(in: self)
             let deltaX = newPoint.x - lastPoint!.x
             let deltaY = newPoint.y - lastPoint!.y
