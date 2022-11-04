@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-// Long press on blank to change color
+// Long press on blank to change color. Completed
 // double tap on blank to clear -> confirm. Completed
 // single tap on a line : delete, red, yellow, blue, black. Completed
-// Long press on a line and pan to move
+// Long press on a line and pan to move. completed
 // load existing image to canvas. Completed
 
 class CanvasView: UIView{
@@ -30,6 +30,7 @@ class CanvasView: UIView{
     }
     var vc : DrawViewController!
     var numQ: NumQ!
+    var longPressed = false
     
     // MARK: - Gesture Recognition
     required init?(coder aDecoder: NSCoder){
@@ -108,45 +109,82 @@ class CanvasView: UIView{
         
     }
     
+    var movingLine = false
     @objc func longPress(_ gestureRecognizer: UIGestureRecognizer){
         let point = gestureRecognizer.location(in: self)
-        selectedLineIndex = indexOfLine(at: point)
-        let menu = UIMenuController.shared
-        if selectedLineIndex == nil {
-            // Long Press on blank to change color
-            becomeFirstResponder()
-            // Menu Items
-            let deleteItem = UIMenuItem(title: "Delete", action: #selector(deleteLine(_:)))
-            // TODO: Question for TA
-            let redItem = UIMenuItem(title: "Red", action: #selector(changeRedPermanently(_:)))
-            let yellowItem = UIMenuItem(title: "Yellow", action: #selector(changeYellowPermanently(_:)))
-            let blueItem = UIMenuItem(title: "Blue", action: #selector(changeBluePermanently(_:)))
-            let blackItem = UIMenuItem(title: "Black", action: #selector(changeBlackPermanently(_:)))
-            
-            var items = [deleteItem,redItem,yellowItem,blueItem,blackItem]
-            
-            switch currColor{
-            case UIColor.red:
-                items.remove(at: 1)
-            case UIColor.yellow:
-                items.remove(at: 2)
-            case UIColor.blue:
-                items.remove(at: 3)
-            case UIColor.black:
-                items.remove(at: 4)
-            default: break
+        let blank = (indexOfLine(at: point) == nil)
+        if !movingLine && gestureRecognizer.state == .began && !blank{
+            movingLine = true
+            selectedLineIndex = indexOfLine(at: point)
+            longPressOnLine(gestureRecognizer)
+        }else if movingLine{
+            longPressOnLine(gestureRecognizer)
+            if gestureRecognizer.state == .ended {
+                movingLine = false
+                selectedLineIndex  = nil
             }
-            
-            menu.menuItems = items
-            let targetRect = CGRect(x: point.x, y: point.y, width: 2, height: 2)
-            menu.showMenu(from: self, rect: targetRect)
-                                        
+        }else if !movingLine && blank {
+            longPressOnBlank(gestureRecognizer)
+        }
+    }
+    
+    // MARK: - Move a Line Around
+    var lastPoint: CGPoint?
+    func longPressOnLine(_ gestureRecognizer: UIGestureRecognizer){
+        if gestureRecognizer.state == .began{
+            print("begin")
+            lastPoint = gestureRecognizer.location(in: self)
         }else{
-            menu.hideMenu()
+            print("update")
+            let newPoint = gestureRecognizer.location(in: self)
+            let deltaX = newPoint.x - lastPoint!.x
+            let deltaY = newPoint.y - lastPoint!.y
+            var line = finishedLines[selectedLineIndex!]
+            let newBegin = CGPoint(x: line.begin.x + deltaX, y: line.begin.y + deltaY)
+            let newEnd = CGPoint(x: line.end.x + deltaX, y: line.end.y + deltaY)
+            line.begin = newBegin
+            line.end = newEnd
+            // TODO: Mutable?
+            finishedLines[selectedLineIndex!] = line
+            setNeedsDisplay()
+            lastPoint = newPoint
         }
     }
     
     // MARK: - Change Color Permanently
+    func longPressOnBlank(_ gestureRecognizer: UIGestureRecognizer){
+        let point = gestureRecognizer.location(in: self)
+        // Long Press on blank to change color
+        let menu = UIMenuController.shared
+        becomeFirstResponder()
+        // Menu Items
+        let deleteItem = UIMenuItem(title: "Delete", action: #selector(deleteLine(_:)))
+        // TODO: Question for TA
+        let redItem = UIMenuItem(title: "Red", action: #selector(changeRedPermanently(_:)))
+        let yellowItem = UIMenuItem(title: "Yellow", action: #selector(changeYellowPermanently(_:)))
+        let blueItem = UIMenuItem(title: "Blue", action: #selector(changeBluePermanently(_:)))
+        let blackItem = UIMenuItem(title: "Black", action: #selector(changeBlackPermanently(_:)))
+        
+        var items = [deleteItem,redItem,yellowItem,blueItem,blackItem]
+        
+        switch currColor{
+        case UIColor.red:
+            items.remove(at: 1)
+        case UIColor.yellow:
+            items.remove(at: 2)
+        case UIColor.blue:
+            items.remove(at: 3)
+        case UIColor.black:
+            items.remove(at: 4)
+        default: break
+        }
+        
+        menu.menuItems = items
+        let targetRect = CGRect(x: point.x, y: point.y, width: 2, height: 2)
+        menu.showMenu(from: self, rect: targetRect)
+                                  
+    }
+    
     @objc func changeRedPermanently(_ sender: UIMenuController){
         currColor = UIColor.red
     }
